@@ -1,7 +1,7 @@
 package io.elitejava3.BankAPI.services;
 
 import io.elitejava3.BankAPI.domains.Customer;
-import io.elitejava3.BankAPI.expections.ResourceNotFoundException;
+import io.elitejava3.BankAPI.exceptions.ResourceNotFoundException;
 import io.elitejava3.BankAPI.repositories.AddressRepository;
 import io.elitejava3.BankAPI.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;

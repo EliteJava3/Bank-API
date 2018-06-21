@@ -7,9 +7,11 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @ManyToOne
     private Account account;
     private String first_name;
     private String last_name;
+    @ElementCollection
     private Set<Address> addresses;
 
     public Customer(){}

@@ -1,4 +1,4 @@
-package io.elitejava3.BankAPI.expections;
+package io.elitejava3.BankAPI.exceptions;
 
 public class ResourceNotFoundException extends RuntimeException {
     public ResourceNotFoundException() {}
