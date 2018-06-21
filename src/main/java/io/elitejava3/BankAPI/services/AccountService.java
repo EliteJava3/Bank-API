@@ -38,7 +38,6 @@ public class AccountService {
 
     public Customer getCustomerById(Long customerId) {
        return customerService.getCustomerById(customerId);
-
     }
 
     public List<Account> getAccountsByCustomerId(Long customerId){

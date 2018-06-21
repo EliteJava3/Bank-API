@@ -36,11 +36,6 @@ public class CustomerService {
         return customerRepository.findCustomerById(id);
     }
 
-//    // Get
-//    public Customer getCustomerByAccountId(Long accountId) {
-//        return customerRepository.findCustomerByAccountId(accountId);
-//    }
-
     // Get All
     public List<Customer> getAllCustomers() {
         return (ArrayList<Customer>) customerRepository.findAll();
