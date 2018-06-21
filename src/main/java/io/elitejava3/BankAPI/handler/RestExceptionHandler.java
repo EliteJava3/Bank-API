@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class RestExceptionHandler {
 
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<?> handleAccountNotFoundException(ResourceNotFoundException anfe){
-        ResponseDetails responeDetails = new ResponseDetails();
-        responeDetails.setStatus(HttpStatus.NOT_FOUND.value());
-        responeDetails.setMessage("“error fetching accounts”");
+    public ResponseEntity<?> handleResourceNotFoundException(ResourceNotFoundException anfe){
+        ResponseDetails responseDetails = new ResponseDetails();
+        responseDetails.setStatus(HttpStatus.NOT_FOUND.value());
+        responseDetails.setMessage("“error fetching accounts”");
 
-        return new ResponseEntity<>(responeDetails,null);
+        return new ResponseEntity<>(responseDetails,HttpStatus.NOT_FOUND);
     }
 
 }
