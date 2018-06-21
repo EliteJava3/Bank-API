@@ -6,6 +6,7 @@ import io.elitejava3.BankAPI.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,7 +23,7 @@ public class CustomerService {
 
     // Create
     public Customer createCustomer(Customer customer) {
-        return customerRepository.createCustomer(customer);
+        return customerRepository.save(customer);
     }
 
     // Get
@@ -30,23 +31,23 @@ public class CustomerService {
         return customerRepository.findCustomerById(id);
     }
 
-    // Get
-    public Customer getCustomerByAccountId(Long accountId) {
-        return customerRepository.findCustomerByAccountId(accountId);
-    }
+//    // Get
+//    public Customer getCustomerByAccountId(Long accountId) {
+//        return customerRepository.findCustomerByAccountId(accountId);
+//    }
 
     // Get All
     public List<Customer> getAllCustomers() {
-        return customerRepository.findAllCustomers();
+        return (List<Customer>) customerRepository.findAll();
     }
 
     // Update
     public Customer udpateCustomer(Customer customer) {
-        return customerRepository.saveCustomer(customer);
+        return customerRepository.save(customer);
     }
 
     // Delete
     public void deleteCustomer(Long id) {
-        customerRepository.deleteCustomerById(id);
+        customerRepository.deleteById(id);
     }
 }

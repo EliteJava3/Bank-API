@@ -26,15 +26,15 @@ public class CustomerController {
 
 
 
-    // Get a Customer by their Account ID
-    @RequestMapping(value ="/accounts/{accountId}/customer", method = RequestMethod.GET)
-    public ResponseEntity<?> getCustomerByAccountId(@PathVariable Long accountId) {
-        HttpStatus status = HttpStatus.OK;
-        Customer customer = customerService.getCustomerByAccountId(accountId);
-
-        log.info("[GET BY ACCOUNT ID]: " + customer);
-        return new ResponseEntity<>(customer, status);
-    }
+//    // Get a Customer by their Account ID
+//    @RequestMapping(value ="/accounts/{accountId}/customer", method = RequestMethod.GET)
+//    public ResponseEntity<?> getCustomerByAccountId(@PathVariable Long accountId) {
+//        HttpStatus status = HttpStatus.OK;
+//        Customer customer = customerService.getCustomerByAccountId(accountId);
+//
+//        log.info("[GET BY ACCOUNT ID]: " + customer);
+//        return new ResponseEntity<>(customer, status);
+//    }
 
     // Get all Customers
     @RequestMapping(value = "/customers", method = RequestMethod.GET)
