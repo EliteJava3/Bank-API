@@ -1,8 +1,8 @@
 package io.elitejava3.BankAPI.controllers;
 
-import com.example.javacohort3.ZipCodeBank.domains.Customer;
-import com.example.javacohort3.ZipCodeBank.exceptions.ResourceNotFoundException;
-import com.example.javacohort3.ZipCodeBank.services.CustomerService;
+
+import io.elitejava3.BankAPI.domains.Customer;
+import io.elitejava3.BankAPI.services.CustomerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,8 +84,8 @@ public class CustomerController {
     @RequestMapping(value = "/customers/{id}", method = RequestMethod.PUT)
     public ResponseEntity<?> updateCustomer(@RequestBody Customer customer, @PathVariable Long id) {
         HttpStatus status;
-        Customer c = customerService.updateCustomer(customer);
-        if (customerService.updateCustomer(customer).equals(customerService.getCustomerById(id))){
+        Customer c = customerService.udpateCustomer(customer);
+        if (customerService.udpateCustomer(customer).equals(customerService.getCustomerById(id))){
             status = HttpStatus.OK;
             log.info("[PUT-UPDATE]: " + customer);
             return new ResponseEntity<>(c,status);

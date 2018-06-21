@@ -1,8 +1,12 @@
 package io.elitejava3.BankAPI.services;
 
+import io.elitejava3.BankAPI.domains.Customer;
+import io.elitejava3.BankAPI.expections.AccountNotFoundExpection;
 import io.elitejava3.BankAPI.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class CustomerService {
@@ -13,7 +17,7 @@ public class CustomerService {
 
     // Verify
     public void verifyCustomer(Long id) {
-        if (customerRepository.findCustomerById(id) == null) throw new RuntimeException();
+        if (customerRepository.findCustomerById(id) == null) throw new AccountNotFoundExpection();
     }
 
     // Create
