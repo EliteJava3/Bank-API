@@ -10,13 +10,12 @@ public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public Long id;
-    public String street_number;
-    public String street_name;
-    public String city;
-    public String state;
-    public String zipCode;
-
+    private Long id;
+    private String street_number;
+    private String street_name;
+    private String city;
+    private String state;
+    private String zipCode;
 
     public Address(){}
 
@@ -28,7 +27,6 @@ public class Address {
         this.state = state;
         this.zipCode = zipCode;
     }
-
 
     public Long getId() {
         return id;

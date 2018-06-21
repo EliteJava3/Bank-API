@@ -84,8 +84,8 @@ public class CustomerController {
     @RequestMapping(value = "/customers/{id}", method = RequestMethod.PUT)
     public ResponseEntity<?> updateCustomer(@RequestBody Customer customer, @PathVariable Long id) {
         HttpStatus status;
-        Customer c = customerService.udpateCustomer(customer);
-        if (customerService.udpateCustomer(customer).equals(customerService.getCustomerById(id))){
+        Customer c = customerService.updateCustomer(customer);
+        if (customerService.updateCustomer(customer).equals(customerService.getCustomerById(id))){
             status = HttpStatus.OK;
             log.info("[PUT-UPDATE]: " + customer);
             return new ResponseEntity<>(c,status);
