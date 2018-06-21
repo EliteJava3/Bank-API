@@ -1,6 +1,5 @@
 package io.elitejava3.BankAPI.controllers;
 
-
 import io.elitejava3.BankAPI.domains.Customer;
 import io.elitejava3.BankAPI.services.CustomerService;
 import org.slf4j.Logger;
@@ -19,7 +18,6 @@ import java.util.List;
 
 @RestController
 public class CustomerController {
-
     private static final Logger log = LoggerFactory.getLogger(SpringApplication.class);
     @Autowired
     private CustomerService customerService;
