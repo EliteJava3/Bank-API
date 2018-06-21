@@ -2,10 +2,7 @@ package io.elitejava3.BankAPI.domains;
 
 import io.elitejava3.BankAPI.enums.AccountType;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Account {
@@ -17,6 +14,7 @@ public class Account {
     private String nickname;
     private Integer rewards;
     private Double balance;
+    @ManyToOne
     private Customer customer;
 
     public Account(){}
