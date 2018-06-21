@@ -1,16 +1,23 @@
 package io.elitejava3.BankAPI.exceptions;
 
 public class ResponseDetails {
-    private int status;
+    private Integer status;
     private String message;
+    private Object data;
 
 
     public ResponseDetails() {
     }
 
-    public ResponseDetails(int status, String message) {
+    public ResponseDetails(Integer status, String message) {
         this.status = status;
         this.message = message;
+    }
+
+    public ResponseDetails(int status, String message, Object data) {
+        this.status = status;
+        this.message = message;
+        this.data = data;
     }
 
     public int getStatus() {

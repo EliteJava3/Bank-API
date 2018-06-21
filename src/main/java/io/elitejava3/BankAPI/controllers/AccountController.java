@@ -84,6 +84,7 @@ public class AccountController {
             status = HttpStatus.OK;
             return new ResponseEntity<>(a,status);
         }else{
+            accountService.verifyAccountById(accountId);
             log.info("[created]" + account);
             status = HttpStatus.CREATED;
             return new ResponseEntity<>(status);

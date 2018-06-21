@@ -9,7 +9,7 @@ import static io.elitejava3.BankAPI.enums.AccountType.SAVINGS;
 @Entity
 public class Account {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private AccountType type;//ENUM serialized as a string
     private String nickname;

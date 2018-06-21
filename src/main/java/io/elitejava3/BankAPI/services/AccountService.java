@@ -15,14 +15,12 @@ import java.util.stream.Collectors;
 
 @Service
 public class AccountService {
-    @Autowired
     private AccountRepository accountRepository;
-    private CustomerRepository customerRepository;
     private CustomerService customerService;
 
-    public AccountService(AccountRepository accountRepository, CustomerRepository customerRepository, CustomerService customerService) {
+    @Autowired
+    public AccountService(AccountRepository accountRepository, CustomerService customerService) {
         this.accountRepository = accountRepository;
-        this.customerRepository = customerRepository;
         this.customerService = customerService;
     }
 
@@ -39,7 +37,8 @@ public class AccountService {
     }
 
     public Customer getCustomerById(Long customerId) {
-        return customerRepository.findCustomerById(customerId);
+       return customerService.getCustomerById(customerId);
+
     }
 
     public List<Account> getAccountsByCustomerId(Long customerId){
