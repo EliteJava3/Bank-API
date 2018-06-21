@@ -1,4 +1,4 @@
-package io.elitejava3.BankAPI.expections;
+package io.elitejava3.BankAPI.exceptions;
 
 public class ResponeDetails {
     private int status;

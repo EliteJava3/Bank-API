@@ -1,7 +1,7 @@
 package io.elitejava3.BankAPI.handler;
 
-import io.elitejava3.BankAPI.expections.ResourceNotFoundException;
-import io.elitejava3.BankAPI.expections.ResponeDetails;
+import io.elitejava3.BankAPI.exceptions.ResourceNotFoundException;
+import io.elitejava3.BankAPI.exceptions.ResponeDetails;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
