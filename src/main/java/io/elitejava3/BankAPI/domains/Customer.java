@@ -8,17 +8,18 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @ManyToOne
+    @Transient
     private Account account;
     private String first_name;
     private String last_name;
     @ElementCollection
+    @Transient
     private Set<Address> addresses;
 
     public Customer(){}
 
-    public Customer(Long id, Account account, String first_name, String last_name, Set<Address> addresses) {
+    public Customer(Long id, String first_name, String last_name, Set<Address> addresses) {
         this.id = id;
-        this.account = account;
         this.first_name = first_name;
         this.last_name = last_name;
         this.addresses = addresses;
@@ -38,4 +39,15 @@ public class Customer {
 
     public Set<Address> getAddresses() { return addresses; }
     public void setAddresses(Set<Address> addresses) { this.addresses = addresses; }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", account=" + account +
+                ", first_name='" + first_name + '\'' +
+                ", last_name='" + last_name + '\'' +
+                ", addresses=" + addresses +
+                '}';
+    }
 }

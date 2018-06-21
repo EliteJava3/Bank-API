@@ -1,14 +1,14 @@
 package io.elitejava3.BankAPI.exceptions;
 
-public class ResponeDetails {
+public class ResponseDetails {
     private int status;
     private String message;
 
 
-    public ResponeDetails() {
+    public ResponseDetails() {
     }
 
-    public ResponeDetails(int status, String message) {
+    public ResponseDetails(int status, String message) {
         this.status = status;
         this.message = message;
     }
