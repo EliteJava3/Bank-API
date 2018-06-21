@@ -4,6 +4,8 @@ import io.elitejava3.BankAPI.enums.AccountType;
 
 import javax.persistence.*;
 
+import static io.elitejava3.BankAPI.enums.AccountType.SAVINGS;
+
 @Entity
 public class Account {
     @Id
@@ -18,13 +20,12 @@ public class Account {
 
     public Account(){}
 
-    public Account(Long id, AccountType type, String nickname, Integer rewards, Double balance, Customer customer) {
+    public Account(Long id, AccountType type, String nickname, Integer rewards, Double balance) {
         this.id = id;
         this.type = type;
         this.nickname = nickname;
         this.rewards = rewards;
         this.balance = balance;
-        this.customer = customer;
     }
 
     public Long getId() { return id; }

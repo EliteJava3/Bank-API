@@ -27,6 +27,7 @@ public class AccountController {
     @Autowired
     public AccountController(AccountService accountService) { this.accountService = accountService; }
 
+    // Get account by its ID
     @RequestMapping(value = "customers/{customerId}/accounts/{accountId}", method = RequestMethod.GET)
     public ResponseEntity<?> getAccountByID(@PathVariable Long accountId){
         HttpStatus status;
@@ -42,25 +43,33 @@ public class AccountController {
         return new ResponseEntity<>(response, status);
     }
 
+    // Get All accounts from a customer
     @RequestMapping(value = "/customers/{customerId}/accounts", method = RequestMethod.GET)
     public ResponseEntity<?> getAllAccountsByCustomerId(@PathVariable Long customerId) {
         HttpStatus status = HttpStatus.OK;
-        Account customerInfo = accountService.getAccountsByCustomerId(customerId);
+        accountService.verifyCustomerById(customerId);
+        List<Account> accounts = accountService.getAccountsByCustomerId(customerId);
         log.info("[Get]" + customerId);
-        return new ResponseEntity<>(customerInfo, status);
+        return new ResponseEntity<>(accounts, status);
     }
 
+    // Create Account
     @RequestMapping(value = "/customers/{customerId}/accounts", method = RequestMethod.POST)
     public ResponseEntity<?> createAccountFromCustomerId(@RequestBody Account account, @PathVariable Long customerId){
         HttpStatus status = HttpStatus.CREATED;
-        // account.setCustomer(new Customer(customerId,null,"","",null));
+
+        account.setCustomer(accountService.getCustomerById(customerId));
+        accountService.getCustomerById(customerId).setAccount(account);
+
         Account a = accountService.createAccount(account);
+        accountService.verifyAccountById(a.getId());
 
 
         log.info("[POST] " + a);
         return new ResponseEntity<>(a, status);
     }
 
+    // update account
     @RequestMapping(value = "/customers/{customerId}/accounts/{accountId}", method = RequestMethod.PUT)
     public  ResponseEntity<?> updateAccount(@RequestBody Account account, @PathVariable Long customerId ,@PathVariable Long accountId) {
         HttpStatus status;
@@ -84,6 +93,7 @@ public class AccountController {
 
     }
 
+    // delete account
     @RequestMapping(value = "/customers/{customerId}/accounts/{accountId}", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleAccountById(@PathVariable Long accountId){
         HttpStatus status = HttpStatus.NO_CONTENT;

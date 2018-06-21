@@ -7,9 +7,11 @@ import io.elitejava3.BankAPI.repositories.AccountRepository;
 import io.elitejava3.BankAPI.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.resource.ResourceResolverChain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AccountService {
@@ -24,6 +26,10 @@ public class AccountService {
         this.customerService = customerService;
     }
 
+    public void verifyCustomerById(Long id) {
+        customerService.verifyCustomer(id);
+    }
+
     public void verifyAccountById(Long id){
         if (accountRepository.findAccountById(id) == null) throw new ResourceNotFoundException();
     }
@@ -32,11 +38,16 @@ public class AccountService {
         return accountRepository.save(account);
     }
 
-    public Account getAccountsByCustomerId(Long customerId){
+    public Customer getCustomerById(Long customerId) {
+        return customerRepository.findCustomerById(customerId);
+    }
+
+    public List<Account> getAccountsByCustomerId(Long customerId){
         customerService.verifyCustomer(customerId);
         Customer c = customerRepository.findCustomerById(customerId);
         ArrayList<Account> accounts = (ArrayList<Account>) accountRepository.findAll();
-        return accounts.stream().filter(x -> x.getCustomer().getId().equals(customerId)).findFirst().get();
+        accounts.removeIf(a -> a.getCustomer().getId().equals(customerId));
+        return accounts;
     }
 
     public Account getAccountById (Long id){
