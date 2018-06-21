@@ -8,7 +8,7 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long id;
-    public Long accountId;
+    public Account account;
     public String first_name;
     public String last_name;
     @OneToMany
