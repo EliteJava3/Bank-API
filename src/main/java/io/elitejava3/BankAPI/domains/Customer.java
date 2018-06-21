@@ -17,9 +17,9 @@ public class Customer {
 
     public Customer(){}
 
-    public Customer(Long id, Long accountId, String first_name, String last_name, Set<Address> addresses) {
+    public Customer(Long id, Account account, String first_name, String last_name, Set<Address> addresses) {
         this.id = id;
-        this.accountId = accountId;
+        this.account = account;
         this.first_name = first_name;
         this.last_name = last_name;
         this.addresses = addresses;
@@ -34,12 +34,12 @@ public class Customer {
         this.id = id;
     }
 
-    public Long getAccountId() {
-        return accountId;
+    public Account getAccount() {
+        return account;
     }
 
-    public void setAccountId(Long accountId) {
-        this.accountId = accountId;
+    public void setAccountId(Account account) {
+        this.account = account;
     }
 
     public String getFirst_name() {
@@ -70,7 +70,7 @@ public class Customer {
     public String toString() {
         return "Customer{" +
                 "id=" + id +
-                ", accountId=" + accountId +
+                ", accountId=" + account +
                 ", first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +
                 ", addresses=" + addresses +
