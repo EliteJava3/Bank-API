@@ -59,7 +59,6 @@ public class AccountController {
         HttpStatus status = HttpStatus.CREATED;
 
         account.setCustomer(accountService.getCustomerById(customerId));
-        accountService.getCustomerById(customerId).setAccount(account);
 
         Account a = accountService.createAccount(account);
         accountService.verifyAccountById(a.getId());
