@@ -1,7 +1,8 @@
 package io.elitejava3.BankAPI.services;
 
 import io.elitejava3.BankAPI.domains.Customer;
-import io.elitejava3.BankAPI.expections.AccountNotFoundExpection;
+import io.elitejava3.BankAPI.expections.ResourceNotFoundException;
+import io.elitejava3.BankAPI.repositories.AddressRepository;
 import io.elitejava3.BankAPI.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,13 +13,17 @@ import java.util.List;
 @Service
 public class CustomerService {
     private CustomerRepository customerRepository;
+    private AddressRepository addressRepository;
 
     @Autowired
-    public CustomerService(CustomerRepository customerRepository) { this.customerRepository = customerRepository; }
+    public CustomerService(CustomerRepository customerRepository, AddressRepository addressRepository) {
+        this.customerRepository = customerRepository;
+        this.addressRepository = addressRepository;
+    }
 
     // Verify
     public void verifyCustomer(Long id) {
-        if (customerRepository.findCustomerById(id) == null) throw new AccountNotFoundExpection();
+        if (customerRepository.findCustomerById(id) == null) throw new ResourceNotFoundException();
     }
 
     // Create
@@ -38,16 +43,16 @@ public class CustomerService {
 
     // Get All
     public List<Customer> getAllCustomers() {
-        return (List<Customer>) customerRepository.findAll();
+        return (ArrayList<Customer>) customerRepository.findAll();
     }
 
     // Update
-    public Customer udpateCustomer(Customer customer) {
+    public Customer updateCustomer(Customer customer) {
         return customerRepository.save(customer);
     }
 
     // Delete
     public void deleteCustomer(Long id) {
-        customerRepository.deleteById(id);
+        customerRepository.deleteCustomerById(id);
     }
 }
